@@ -13,16 +13,24 @@
 .ud-single-pricing {
   margin-bottom: 40px;
   background: var(--white);
-  border: 2px solid #d4deff;
-  border-radius: 8px;
+  border: 1px solid rgba(212, 222, 255, 0.4);
+  border-radius: 16px;
   text-align: center;
   padding: 45px 30px;
   position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,0.1);
+  }
 
   &.active {
-    background: linear-gradient(180deg, #3056d3 0%, #179bee 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
     border: none;
     padding: 55px 30px;
+    box-shadow: 0 20px 50px -15px rgba(138, 30, 219, 0.4);
 
     .ud-pricing-header {
       h3,
@@ -90,7 +98,23 @@
     li {
       font-weight: 500;
       font-size: 15px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+      padding: 0 15px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      &::before {
+        content: "✓";
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+    }
+
+    .active & li::before {
+      color: var(--white);
     }
   }
 
