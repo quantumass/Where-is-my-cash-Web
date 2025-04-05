@@ -508,8 +508,16 @@ p {
 
 /* ===== Hero CSS ===== */
 .ud-hero {
-  background: var(--primary-color);
+  background: linear-gradient(45deg, #8A1EDB, #FF6B6B);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
   padding-top: 180px;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 20% 50% }
+  50% { background-position: 10% 50% }
+  100% { background-position: 20% 50% }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -640,11 +648,14 @@ p {
   text-align: center;
   position: relative;
   z-index: 1;
+  transition: transform 0.3s ease;
 }
 
 .ud-hero-image img {
   max-width: 100%;
   text-align: center;
+  border-radius: 20px 20px 0 0;
+  transition: all 0.3s ease;
 }
 
 .ud-hero-image .shape {
@@ -1466,7 +1477,6 @@ p {
 /* ===== Footer CSS ===== */
 .ud-footer {
   background: var(--heading-color);
-  padding-top: 100px;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -1496,13 +1506,12 @@ p {
   margin-bottom: 50px;
 }
 
-.ud-widget .ud-footer-logo {
+.ud-footer-logo {
   max-width: 160px;
   display: block;
-  margin-bottom: 10px;
 }
 
-.ud-widget .ud-footer-logo img {
+.ud-footer-logo img {
   width: 100%;
 }
 
@@ -1578,7 +1587,8 @@ p {
 }
 
 .ud-footer-bottom {
-  padding: 35px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-top: 1px solid rgba(136, 144, 164, 0.43);
 }
 
@@ -1625,7 +1635,7 @@ p {
 }
 
 .ud-footer-bottom .ud-footer-bottom-right a {
-  color: var(--primary-color);
+  color: #f3f4fe;
 }
 
 .ud-footer-bottom .ud-footer-bottom-right a:hover {
