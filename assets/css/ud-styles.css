@@ -508,10 +508,82 @@ p {
 
 /* ===== Hero CSS ===== */
 .ud-hero {
-  background: linear-gradient(45deg, #8A1EDB, #FF6B6B);
-  background-size: 200% 200%;
-  animation: gradientMove 10s ease infinite;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #16213e 100%);
   padding-top: 180px;
+  position: relative;
+  overflow: hidden;
+}
+
+.abstract-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.abstract-shapes .circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(138, 30, 219, 0.1);
+}
+
+.abstract-shapes .circle-1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -100px;
+  animation: float 10s ease-in-out infinite;
+  animation-delay: -30s;
+}
+
+.abstract-shapes .circle-2 {
+  width: 500px;
+  height: 500px;
+  bottom: -100px;
+  left: -200px;
+  animation: float 10s ease-in-out infinite reverse;
+  animation-delay: -15s;
+}
+
+.abstract-shapes .circle-4 {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  left: 20%;
+  animation: float 10s ease-in-out infinite;
+  animation-delay: -45s;
+  background: rgba(148, 53, 223, 0.08);
+}
+
+.abstract-shapes .circle-5 {
+  width: 350px;
+  height: 350px;
+  bottom: 30%;
+  right: 30%;
+  animation: float 10s ease-in-out infinite reverse;
+  animation-delay: -60s;
+  background: rgba(138, 30, 219, 0.15);
+}
+
+.abstract-shapes .circle-6 {
+  width: 180px;
+  height: 180px;
+  top: 60%;
+  left: 35%;
+  animation: float 10s ease-in-out infinite;
+  animation-delay: -75s;
+  background: rgba(15, 14, 16, 0.12);
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  20% { transform: translate(8px, -8px) rotate(1deg) scale(1.02); }
+  40% { transform: translate(-4px, 10px) rotate(-1deg) scale(0.98); }
+  60% { transform: translate(-8px, -5px) rotate(0.5deg) scale(1.01); }
+  80% { transform: translate(6px, 8px) rotate(-0.5deg) scale(0.99); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
 @keyframes gradientMove {
@@ -654,7 +726,6 @@ p {
 .ud-hero-image img {
   max-width: 100%;
   text-align: center;
-  border-radius: 20px 20px 0 0;
   transition: all 0.3s ease;
 }
 
@@ -669,8 +740,8 @@ p {
 }
 
 .ud-hero-image .shape.shape-2 {
-  top: -20px;
-  right: -20px;
+  top: 10px;
+  right: 20px;
 }
 
 /* ===== Features CSS ===== */
