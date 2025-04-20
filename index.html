@@ -39,11 +39,22 @@
     />
 
     <!-- ===== All CSS files ===== -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" />
-    <link rel="stylesheet" href="assets/css/ud-styles.css" />
-  </head>
+    <head>
+        <!-- Add preload for critical assets -->
+        <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+        <link rel="preload" href="assets/css/ud-styles.css" as="style">
+        <link rel="preload" href="assets/js/bootstrap.bundle.min.js" as="script">
+        
+        <!-- Add async loading for non-critical scripts -->
+        <script src="assets/js/wow.min.js" async></script>
+        <script src="assets/js/main.js" defer></script>
+    
+        <!-- Minify and combine CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/css/animate.css" />
+        <link rel="stylesheet" href="assets/css/lineicons.css" />
+        <link rel="stylesheet" href="assets/css/ud-styles.css" />
+    </head>
   <body>
     <!-- ====== Header Start ====== -->
     <header class="ud-header">
@@ -125,7 +136,13 @@
               </ul>
             </div>
             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-              <img src="assets/images/hero/hero-image.webp" alt="hero-image" />
+              <!-- Update image elements to use WebP with fallback -->
+              <img src="assets/images/hero/hero-image.webp" 
+                   srcset="assets/images/hero/hero-image.webp, assets/images/hero/hero-image.jpg" 
+                   alt="hero-image"
+                   loading="lazy" 
+                   width="845" 
+                   height="auto" />
               <img
                 src="assets/images/hero/dotted-shape.svg"
                 alt="shape"
