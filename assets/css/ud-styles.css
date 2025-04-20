@@ -1057,6 +1057,71 @@ img {
   }
 }
 
+.ud-hero-image {
+  position: relative;
+  width: 100%;
+  max-width: 845px;
+  margin: auto;
+  text-align: center;
+  aspect-ratio: 845/475;
+  min-height: 475px;
+}
+
+.ud-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ud-hero-image .shape {
+  position: absolute;
+  z-index: -1;
+  width: 100px; /* Set fixed dimensions for shapes */
+  height: 100px;
+}
+
+/* Reserve space for the logo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  min-width: 160px;
+  min-height: 40px;
+}
+
+.navbar-brand img {
+  width: 160px;
+  height: auto;
+}
+
+/* Reserve space for fonts */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+}
+
+/* Reserve space for dynamic content */
+.ud-faq-body {
+  min-height: 120px;
+}
+
+.ud-feature-content {
+  min-height: 150px;
+}
+
+.ud-hero-content {
+  min-height: 250px;
+}
+
+/* Fix contact form layout shifts */
+.ud-form-group {
+  margin-bottom: 20px;
+  min-height: 80px;
+}
+
+.ud-form-group textarea {
+  min-height: 120px;
+}
 /* ====== Banner CSS ======= */
 
 /* ====== Login CSS ====== */
