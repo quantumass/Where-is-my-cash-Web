@@ -78,7 +78,11 @@
 
     <!-- ===== All CSS files ===== -->
     <head>
-        <!-- Add preload for critical assets -->
+        <!-- Preload critical images -->
+        <link rel="preload" as="image" href="assets/images/logo/logo-light.png">
+        <link rel="preload" as="image" href="assets/images/hero/hero-image.webp">
+        
+        <!-- Existing preload content -->
         <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
         <link rel="preload" href="assets/css/ud-styles.css" as="style">
         <link rel="preload" href="assets/js/bootstrap.bundle.min.js" as="script">
@@ -88,10 +92,25 @@
         <script src="assets/js/main.js" defer></script>
     
         <!-- Minify and combine CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/css/animate.css" />
-        <link rel="stylesheet" href="assets/css/lineicons.css" />
-        <link rel="stylesheet" href="assets/css/ud-styles.css" />
+        <!-- Critical CSS inline -->
+        <style>
+            /* Add critical CSS here */
+            .ud-header { /* ... */ }
+            .ud-hero { /* ... */ }
+            /* Add other above-the-fold styles */
+        </style>
+        
+        <!-- Defer non-critical CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="assets/css/animate.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="assets/css/lineicons.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="assets/css/ud-styles.css" media="print" onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/css/animate.css">
+            <link rel="stylesheet" href="assets/css/lineicons.css">
+            <link rel="stylesheet" href="assets/css/ud-styles.css">
+        </noscript>
     </head>
   <body>
     <!-- ====== Header Start ====== -->
@@ -174,23 +193,33 @@
               </ul>
             </div>
             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-              <!-- Update image elements to use WebP with fallback -->
-              <img src="assets/images/hero/hero-image.webp" 
-                   srcset="assets/images/hero/hero-image.webp, assets/images/hero/hero-image.jpg" 
-                   alt="hero-image"
-                   loading="lazy" 
-                   width="845" 
-                   height="auto" />
-              <img
-                src="assets/images/hero/dotted-shape.svg"
-                alt="shape"
-                class="shape shape-1"
-              />
-              <img
-                src="assets/images/hero/dotted-shape.svg"
-                alt="shape"
-                class="shape shape-2"
-              />
+                <picture>
+                    <!-- WebP format with different sizes -->
+                    <source
+                        type="image/webp"
+                        srcset="assets/images/hero/hero-image-300.webp 300w,
+                                assets/images/hero/hero-image-600.webp 600w,
+                                assets/images/hero/hero-image.webp 845w"
+                        sizes="(max-width: 600px) 300px,
+                               (max-width: 1200px) 600px,
+                               845px">
+                    <!-- Fallback JPEG format -->
+                    <source
+                        type="image/jpeg"
+                        srcset="assets/images/hero/hero-image-300.jpg 300w,
+                                assets/images/hero/hero-image-600.jpg 600w,
+                                assets/images/hero/hero-image.jpg 845w"
+                        sizes="(max-width: 600px) 300px,
+                               (max-width: 1200px) 600px,
+                               845px">
+                    <!-- Fallback image -->
+                    <img src="assets/images/hero/hero-image-600.webp" 
+                         alt="TextGenieAI Interface Preview"
+                         width="845" 
+                         height="475"
+                         fetchpriority="high"
+                         style="aspect-ratio: 845/475;">
+                </picture>
             </div>
           </div>
         </div>
