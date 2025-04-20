@@ -86,10 +86,7 @@
         <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
         <link rel="preload" href="assets/css/ud-styles.css" as="style">
         <link rel="preload" href="assets/js/bootstrap.bundle.min.js" as="script">
-        
-        <!-- Add async loading for non-critical scripts -->
-        <script src="assets/js/wow.min.js" async></script>
-        <script src="assets/js/main.js" defer></script>
+  
     
         <!-- Minify and combine CSS -->
         <!-- Critical CSS inline -->
@@ -193,33 +190,12 @@
               </ul>
             </div>
             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-                <picture>
-                    <!-- WebP format with different sizes -->
-                    <source
-                        type="image/webp"
-                        srcset="assets/images/hero/hero-image-300.webp 300w,
-                                assets/images/hero/hero-image-600.webp 600w,
-                                assets/images/hero/hero-image.webp 845w"
-                        sizes="(max-width: 600px) 300px,
-                               (max-width: 1200px) 600px,
-                               845px">
-                    <!-- Fallback JPEG format -->
-                    <source
-                        type="image/jpeg"
-                        srcset="assets/images/hero/hero-image-300.jpg 300w,
-                                assets/images/hero/hero-image-600.jpg 600w,
-                                assets/images/hero/hero-image.jpg 845w"
-                        sizes="(max-width: 600px) 300px,
-                               (max-width: 1200px) 600px,
-                               845px">
-                    <!-- Fallback image -->
-                    <img src="assets/images/hero/hero-image-600.webp" 
-                         alt="TextGenieAI Interface Preview"
-                         width="845" 
-                         height="475"
-                         fetchpriority="high"
-                         style="aspect-ratio: 845/475;">
-                </picture>
+              <img src="assets/images/hero/hero-image.webp" 
+                srcset="assets/images/hero/hero-image.webp, assets/images/hero/hero-image.jpg" 
+                alt="hero-image"
+                loading="lazy" 
+                width="845" 
+                height="auto" />
             </div>
           </div>
         </div>
@@ -599,7 +575,6 @@
     <!-- ====== Back To Top End ====== -->
 
     <!-- ====== All Javascript Files ====== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
