@@ -256,6 +256,11 @@ p {
   transition: all 0.3s ease-out 0s;
 }
 
+
+.sticky .navbar-toggler .toggler-icon {
+  background-color: black;
+}
+
 .navbar-toggler.active .toggler-icon:nth-of-type(1) {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -1060,11 +1065,8 @@ img {
 .ud-hero-image {
   position: relative;
   width: 100%;
-  max-width: 845px;
   margin: auto;
   text-align: center;
-  aspect-ratio: 845/475;
-  min-height: 475px;
 }
 
 .ud-hero-image img {
