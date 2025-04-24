@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status Check</title>
+    <title>TextGenieAI | Update Check</title>
     <style>
         * {
             margin: 0;
@@ -47,7 +47,7 @@
         .btn {
             padding: 12px 32px;
             font-size: 1.1rem;
-            background: #3498db;
+            background: #8A1EDB;
             color: white;
             border: none;
             border-radius: 25px;
@@ -56,23 +56,57 @@
         }
 
         .btn:hover {
-            background: #2980b9;
+            background: #9826ef;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .searching-text {
+            color: #8A1EDB;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #8A1EDB;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .content {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>No updates available at this time</h1>
-        <p>Your system is up to date and running the latest version</p>
-        <!-- <button class="btn" onclick="handleClick()">Click me</button> -->
+    <div class="container" style="width: auto">
+        <div id="loader-section">
+            <p class="searching-text">Searching for updates</p>
+            <div id="loader" class="loader"></div>
+        </div>
+        <div id="content" class="content">
+            <h1>No updates available at this time</h1>
+            <p>Your system is up to date and running the latest version</p>
+        </div>
     </div>
 
     <script>
-        function handleClick() {
-            alert('Button clicked! Add your desired functionality here.');
-        }
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader-section').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }, 1500);
+        });
     </script>
 </body>
 </html>
