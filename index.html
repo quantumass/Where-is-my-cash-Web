@@ -202,7 +202,7 @@
 
               <div class="navbar-btn d-none d-sm-inline-block">
                 <a href="#download" class="ud-main-btn ud-white-btn">
-                  Coming Soon for macOS
+                  Download for macOS
                 </a>
               </div>
             </nav>
@@ -234,8 +234,8 @@
               </p>
               <ul class="ud-hero-buttons">
                 <li>
-                  <a href="#download" class="ud-main-btn ud-white-btn">
-                    Coming Soon for macOS
+                  <a target="_blank" href="/download/TextGenieAI.dmg" class="ud-main-btn ud-white-btn">
+                    Download for macOS
                   </a>
                 </li>
                 <li>
@@ -491,8 +491,8 @@
                 <li><i class="lni lni-checkmark-circle"></i> Instant Installation</li>
               </ul>
               <br/>
-              <a href="#" class="ud-main-btn ud-white-btn">
-                <i class="lni lni-apple"></i> Coming soon for macOS
+              <a target="_blank" href="/download/TextGenieAI.dmg" class="ud-main-btn ud-white-btn">
+                <i class="lni lni-apple"></i> Download for macOS
               </a>
             </div>
           </div>
@@ -683,6 +683,49 @@
       }
 
       window.document.addEventListener("scroll", onScroll);
+    </script>
+    <script type="module">
+
+      // Import the functions you need from the SDKs you need
+    
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+    
+      // TODO: Add SDKs for Firebase products that you want to use
+    
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    
+      // Your web app's Firebase configuration
+    
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    
+      const firebaseConfig = {
+    
+        apiKey: "AIzaSyDlTGtfxVS8TiWyyH2GsoEry8taINt34OE",
+    
+        authDomain: "textgenai-78526.firebaseapp.com",
+    
+        projectId: "textgenai-78526",
+    
+        storageBucket: "textgenai-78526.firebasestorage.app",
+    
+        messagingSenderId: "1088993106868",
+    
+        appId: "1:1088993106868:web:91e11fdda70ce71cacb0e1",
+    
+        measurementId: "G-5XCDEHE9EP"
+    
+      };
+    
+    
+      // Initialize Firebase
+    
+      const app = initializeApp(firebaseConfig);
+    
+      const analytics = getAnalytics(app);
+    
     </script>
   </body>
 </html>
