@@ -330,6 +330,13 @@ p {
   position: relative;
 }
 
+.ud-header.sticky .navbar-nav .nav-item > a {
+  color: var(--heading-color);
+}
+.ud-header.sticky .navbar-btn .ud-white-btn {
+  background-color: var(--primary-color);
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .navbar-nav .nav-item > a {
     display: block;
