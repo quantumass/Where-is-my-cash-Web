@@ -685,48 +685,12 @@
 
       window.document.addEventListener("scroll", onScroll);
     </script>
-    <script type="module">
-
-      // Import the functions you need from the SDKs you need
-    
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-    
-      // TODO: Add SDKs for Firebase products that you want to use
-    
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-    
-      // Your web app's Firebase configuration
-    
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    
-      const firebaseConfig = {
-    
-        apiKey: "AIzaSyDlTGtfxVS8TiWyyH2GsoEry8taINt34OE",
-    
-        authDomain: "textgenai-78526.firebaseapp.com",
-    
-        projectId: "textgenai-78526",
-    
-        storageBucket: "textgenai-78526.firebasestorage.app",
-    
-        messagingSenderId: "1088993106868",
-    
-        appId: "1:1088993106868:web:91e11fdda70ce71cacb0e1",
-    
-        measurementId: "G-5XCDEHE9EP"
-    
-      };
-    
-    
-      // Initialize Firebase
-    
-      const app = initializeApp(firebaseConfig);
-    
-      const analytics = getAnalytics(app);
-    
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_jDXbxwKzvOzxFs6GJpXz5KAgvA6yxXnzNHewDl1NzOd', {
+            api_host: 'https://us.i.posthog.com',
+            person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+        })
     </script>
   </body>
 </html>
