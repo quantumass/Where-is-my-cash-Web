@@ -1012,6 +1012,31 @@ img {
   overflow: hidden;
 }
 
+.ud-footer-links {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ud-footer-links a {
+  color: var(--white);
+  font-size: 14px;
+  margin-right: 10px;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.ud-footer-links a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.ud-footer-links .separator {
+  color: var(--white);
+  margin: 0 5px;
+}
+
 .ud-footer .shape {
   position: absolute;
   z-index: -1;
