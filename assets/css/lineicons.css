@@ -94,3 +94,7 @@ Author: lineicons.com
 .lni-text-format::before {
   content: "\ebd1";
 }
+
+.lni-star::before {
+  content: "\ebb3";
+}

@@ -109,6 +109,50 @@
             .ud-header { /* ... */ }
             .ud-hero { /* ... */ }
             /* Add other above-the-fold styles */
+            
+            /* Video Demo Section Styles */
+            .ud-video-demo {
+              padding: 80px 0;
+              position: relative;
+              background: linear-gradient(180deg, rgba(239, 242, 247, 0.5) 0%, rgba(228, 232, 255, 0.3) 100%);
+              overflow: hidden;
+            }
+            
+            .ud-video-wrapper {
+              position: relative;
+              border-radius: 16px;
+              overflow: hidden;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+              transition: all 0.3s ease-in-out;
+            }
+            
+            .ud-video-wrapper:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            }
+            
+            .ud-video-container {
+              position: relative;
+              padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+              height: 0;
+              overflow: hidden;
+            }
+            
+            .ud-video-container iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: none;
+              border-radius: 16px;
+            }
+            
+            @media (max-width: 767px) {
+              .ud-video-demo {
+                padding: 60px 0;
+              }
+            }
         </style>
         
         <!-- Defer non-critical CSS -->
@@ -189,6 +233,10 @@
                   </li>
 
                   <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#video-demo">Watch Demo</a>
+                  </li>
+
+                  <li class="nav-item">
                     <a class="ud-menu-scroll" href="#features">Features</a>
                   </li>
                   <li class="nav-item">
@@ -230,7 +278,8 @@
               </h1>
               <p class="ud-hero-desc">
                 Transform your writing experience with TextGenieAI. Simply select text anywhere on your Mac 
-                and instantly access powerful AI features for translation, grammar correction, and text summarization.
+                and instantly access powerful AI features for translation, grammar correction, text summarization, 
+                and custom Smart Edit prompts tailored to your specific needs.
               </p>
               <ul class="ud-hero-buttons">
                 <li>
@@ -258,6 +307,42 @@
       </div>
     </section>
     <!-- ====== Hero End ====== -->
+
+    <!-- ====== Video Demo Start ====== -->
+    <section id="video-demo" class="ud-video-demo">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title text-center mx-auto">
+              <span>Watch Demo</span>
+              <h2>See TextGenieAI in Action</h2>
+              <p>
+                Watch how TextGenieAI can transform your writing experience with its powerful AI features.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="ud-video-wrapper wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-video-container">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://www.youtube.com/embed/LUXr8iQSLms" 
+                  title="TextGenieAI – The macOS Writing Assistant | Quick Intro & Easy Installation Guide" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  loading="lazy">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Video Demo End ====== -->
 
     <!-- ====== Features Start ====== -->
     <section id="features" class="ud-features">
@@ -322,6 +407,19 @@
                 <h3 class="ud-feature-title">Instant Access</h3>
                 <p class="ud-feature-desc">
                   Smart popup bar appears right above your selected text for quick access to all features.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".3s">
+              <div class="ud-feature-icon">
+                <i class="lni lni-star"></i>
+              </div>
+              <div class="ud-feature-content">
+                <h3 class="ud-feature-title">Smart Edit</h3>
+                <p class="ud-feature-desc">
+                  Select any text and add custom prompts to get personalized AI assistance tailored to your specific needs.
                 </p>
               </div>
             </div>
@@ -463,6 +561,25 @@
                 <div id="collapseSix" class="accordion-collapse collapse">
                   <div class="ud-faq-body">
                     Yes, TextGenieAI requires an internet connection to access its AI-powered features. This ensures you always have access to the latest improvements and most accurate results.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".25s">
+              <div class="accordion">
+                <button
+                  class="ud-faq-btn collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSeven"
+                >
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>How does the Smart Edit feature work?</span>
+                </button>
+                <div id="collapseSeven" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    The Smart Edit feature allows you to select any text and add your own custom prompts to get highly personalized AI assistance. Simply select the text, click on the Smart Edit option in the popup toolbar, enter your specific instructions or prompts, and TextGenieAI will process your request according to your custom requirements.
                   </div>
                 </div>
               </div>
