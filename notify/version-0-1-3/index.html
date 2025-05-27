@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextGenieAI | Update Check</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(10px);
+            max-width: 700px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: #3a4a5c;
+            margin: 2rem 0 1.5rem;
+            font-size: 1.6rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #8A1EDB;
+            border-radius: 3px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            background: #8A1EDB;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: #9826ef;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 30, 219, 0.3);
+        }
+
+        .searching-text {
+            color: #8A1EDB;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #8A1EDB;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .changelog {
+            text-align: left;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .version-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #8A1EDB;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .version-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .version-date {
+            font-size: 0.9rem;
+            color: #8A1EDB;
+            font-weight: 500;
+        }
+
+        .change-list {
+            list-style: none;
+        }
+
+        .change-item {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .change-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #8A1EDB;
+        }
+
+        .feature:before { background: #4CAF50; }
+        .improvement:before { background: #2196F3; }
+        .bugfix:before { background: #FF9800; }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 8px;
+            text-transform: uppercase;
+        }
+
+        .tag-feature {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4CAF50;
+        }
+
+        .tag-improvement {
+            background: rgba(33, 150, 243, 0.15);
+            color: #2196F3;
+        }
+
+        .tag-bugfix {
+            background: rgba(255, 152, 0, 0.15);
+            color: #FF9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>TextGenieAI Updates</h1>
+            <p>Your system requires an update to access the latest and most innovative features</p>
+            
+            <div class="changelog">
+                <h2>Changelog</h2>
+                
+                <div class="version-card">
+                    <div class="version-header">
+                        <div>
+                            <span class="version-number">Version 1.7</span>
+                            <br />
+                            <span class="version-date">May 27, 2025</span>
+                        </div>
+                    </div>
+                    <ul class="change-list" style="padding-left: 1rem;">
+                        <li class="change-item improvement"><span class="tag tag-improvement">Refactor</span> Removed "Always Show Popup" Setting</li>
+                        <li class="change-item improvement"><span class="tag tag-improvement">Refactor</span> Changed the styling for the light theme users</li>
+                        <li class="change-item improvement"><span class="tag tag-improvement">Improved</span> Now you can pin action with ease</li>
+                        <li class="change-item improvement"><span class="tag tag-improvement">Improved</span> improved the memory management for a better performance</li>
+                        <li class="change-item feature"><span class="tag tag-feature">New</span> Smart Edit with Custom Prompts for more control and creativity on your text </li>
+                        <li class="change-item feature"><span class="tag tag-feature">New</span> Added button to replace the selected text with the generated one </li>
+                        <li class="change-item bugfix"><span class="tag tag-bugfix">Fixed</span> Better Text Selection Detection</li>
+                        <li class="change-item bugfix"><span class="tag tag-bugfix">Fixed</span> Improved compatibility with more devices like mac mini</li>
+                    </ul>
+                    <div style="position: relative; padding-top: 56.25%; height: 0; overflow: hidden; margin-top: 20px;">
+                        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/Y08A1yNXPl0" title="TextGenieAI Version 1.7 Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="version-card">
+                    <div class="version-header">
+                        <div>
+                            <span class="version-number">Version 0.1.4</span>
+                            <br />
+                            <span class="version-date">May 02, 2025</span>
+                        </div>
+                    </div>
+                    <ul class="change-list" style="padding-left: 1rem;">
+                        <li class="change-item feature"><span class="tag tag-feature">New</span> Added glow animation to input fields for better visual feedback</li>
+                        <li class="change-item improvement"><span class="tag tag-improvement">Improved</span> Modified dropdown border color for better visibility</li>
+                        <li class="change-item bugfix"><span class="tag tag-bugfix">Fixed</span> Improved text selection detection</li>
+                        <li class="change-item improvement"><span class="tag tag-improvement">Improved</span> Simplified action sorting in the interface</li>
+                        <li class="change-item improvement"><span class="tag tag-improvement">Improved</span> Enhanced visual feedback for pinned actions</li>
+                        <li class="change-item bugfix"><span class="tag tag-bugfix">Fixed</span> Added missing accessibility roles for text fields</li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+</html>
