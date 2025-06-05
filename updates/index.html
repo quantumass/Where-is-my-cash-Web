@@ -96,16 +96,45 @@
         </div>
         <div id="content" class="content">
             <h1>No updates available at this time</h1>
-            <p>Your system is up to date and running the latest version</p>
+            <p>Your app is up to date and running the latest version</p>
         </div>
     </div>
 
     <script>
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loader-section').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-            }, 1500);
+            // Get version from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const version = urlParams.get('version');
+            
+            if (version) {
+                // Convert version format from 0.1.2 to version-0-1-2
+                const formattedVersion = 'version-' + version.replace(/\./g, '-');
+                const notifyPath = '/notify/' + formattedVersion;
+                
+                // Check if the path exists
+                fetch(notifyPath)
+                    .then(response => {
+                        if (response.ok) {
+                            // Redirect to the notification page if it exists
+                            window.location.href = notifyPath;
+                        } else {
+                            // Show the default content if no notification page exists
+                            document.getElementById('loader-section').style.display = 'none';
+                            document.getElementById('content').style.display = 'block';
+                        }
+                    })
+                    .catch(() => {
+                        // Show the default content if there's an error
+                        document.getElementById('loader-section').style.display = 'none';
+                        document.getElementById('content').style.display = 'block';
+                    });
+            } else {
+                // No version parameter, show default content after delay
+                setTimeout(function() {
+                    document.getElementById('loader-section').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                }, 1500);
+            }
         });
     </script>
 </body>

@@ -543,6 +543,9 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
+  max-width: 500px;
+  margin: auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -577,6 +580,18 @@ p {
           box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   background: #fefefe;
   color: var(--primary-color);
+}
+
+.ud-hero-buttons .ud-dark-btn {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+.ud-hero-buttons .ud-dark-btn:hover {
+  -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
+  background: #1a1a20;
+  color: var(--white);
 }
 
 .ud-hero-buttons .ud-link-btn:hover {
