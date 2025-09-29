@@ -1,0 +1,10 @@
+{
+  "notification_type": "push",
+  "title": "TextGenie Update Available",
+  "description": "A new version of TextGenie is available with exciting features and improvements.",
+  "url": "https://textgenieai.com/updates",
+  "restrictions": {
+    "max_limit_prompt": 100,
+    "max_limit_word": 500
+  }
+}
