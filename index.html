@@ -105,6 +105,25 @@
         <!-- Minify and combine CSS -->
         <!-- Critical CSS inline -->
         <style>
+            /* CSS Custom Properties for Black & White Theme */
+            :root {
+              --primary-color: #ffffff;
+              --secondary-color: #666666;
+              --accent-color: #333333;
+              --bg-primary: #000000;
+              --bg-secondary: #111111;
+              --bg-glass: rgba(255, 255, 255, 0.05);
+              --text-primary: #ffffff;
+              --text-secondary: #cccccc;
+              --border-color: rgba(255, 255, 255, 0.1);
+              --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.1);
+              --gradient-primary: linear-gradient(135deg, #ffffff 0%, #666666 50%, #333333 100%);
+              --gradient-secondary: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+              --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+              --border-radius: 12px;
+              --glass-backdrop: blur(20px);
+            }
+            
             /* Add critical CSS here */
             .ud-header { /* ... */ }
             .ud-hero { /* ... */ }
@@ -667,7 +686,7 @@
                   <input
                     type="text"
                     name="fullName"
-                    placeholder="Brahim Sadok"
+                    placeholder="Your Name"
                   />
                 </div>
                 <div class="ud-form-group">
@@ -675,7 +694,7 @@
                   <input
                     type="email"
                     name="email"
-                    placeholder="dondwayn@yourmail.com"
+                    placeholder="Your best email"
                   />
                 </div>
                 <div class="ud-form-group">
@@ -683,7 +702,7 @@
                   <input
                     type="text"
                     name="phone"
-                    placeholder="+212 5115 5211"
+                    placeholder="Your phone number"
                   />
                 </div>
                 <div class="ud-form-group">
@@ -691,7 +710,7 @@
                   <textarea
                     name="message"
                     rows="1"
-                    placeholder="type your message here"
+                    placeholder="Type your message here"
                   ></textarea>
                 </div>
                 <div class="ud-form-group mb-0">
@@ -804,6 +823,60 @@
 
       window.document.addEventListener("scroll", onScroll);
     </script>
+    
+    <!-- Black & White Particle System -->
+    <script>
+      // Black & White Particle System
+      function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        if (!particlesContainer) return;
+        
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          // Random positioning
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.top = Math.random() * 100 + '%';
+          
+          // Random animation delay
+          particle.style.animationDelay = Math.random() * 6 + 's';
+          particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+          
+          // Black and white colors
+          const colors = ['#ffffff', '#cccccc', '#666666', '#333333'];
+          particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+          particle.style.width = '2px';
+          particle.style.height = '2px';
+          particle.style.position = 'absolute';
+          particle.style.borderRadius = '50%';
+          particle.style.opacity = '0.6';
+          particle.style.animation = 'particleFloat 6s linear infinite';
+          
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Add particle animation styles
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes particleFloat {
+          0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+          10% { opacity: 0.6; }
+          90% { opacity: 0.6; }
+          100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Initialize particles when page loads
+      window.addEventListener('load', function() {
+        createParticles();
+      });
+    </script>
+    
     <script>
         !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
         posthog.init('phc_jDXbxwKzvOzxFs6GJpXz5KAgvA6yxXnzNHewDl1NzOd', {
