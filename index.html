@@ -81,13 +81,13 @@
         <!-- Add at the top of head section -->
         <link 
           rel="preload" 
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
           as="style"
           onload="this.onload=null;this.rel='stylesheet'"
         />
         <noscript>
           <link 
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
             rel="stylesheet"
           />
         </noscript>
@@ -122,6 +122,248 @@
               --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
               --border-radius: 12px;
               --glass-backdrop: blur(20px);
+            }
+
+            /* Font Family Support */
+            body, * {
+              font-family: 'Inter', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            }
+
+            /* Arabic Font Support */
+            [dir="rtl"], [dir="rtl"] * {
+              font-family: 'Tajawal', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            }
+
+            /* Modern Language Switcher Styles */
+            .language-switcher {
+              position: fixed;
+              bottom: 20px;
+              left: 20px;
+              z-index: 9999;
+              display: flex;
+              align-items: center;
+            }
+
+            .language-select {
+              border: 2px solid rgba(255, 255, 255, 0.2);
+              border-radius: 5px;
+              color: #ffffff;
+              padding: 10px 16px;
+              font-size: 14px;
+              font-weight: 600;
+              backdrop-filter: blur(20px);
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+              cursor: pointer;
+              outline: none;
+              min-width: 80px;
+              text-align: center;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+              
+              background: rgba(0, 0, 0, 0.4);
+              border-color: rgba(255, 255, 255, 0.4);
+              
+            }
+
+            .language-select:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            }
+
+            .language-select:focus {
+              transform: translateY(-2px);
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            }
+
+            .language-select option {
+              background: rgba(0, 0, 0, 0.95);
+              color: #ffffff;
+              padding: 10px;
+              font-weight: 500;
+            }
+
+            /* White background adaptation */
+            .ud-header.sticky .language-select {
+              background: rgba(255, 255, 255, 0.9);
+              color: #333333;
+              border-color: rgba(0, 0, 0, 0.1);
+            }
+
+            .ud-header.sticky .language-select:hover {
+              background: rgba(255, 255, 255, 0.95);
+              border-color: rgba(0, 0, 0, 0.2);
+              color: #000000;
+            }
+
+            .ud-header.sticky .language-select:focus {
+              background: rgba(255, 255, 255, 0.98);
+              border-color: rgba(0, 0, 0, 0.3);
+              color: #000000;
+            }
+
+            .ud-header.sticky .language-select option {
+              background: rgba(255, 255, 255, 0.98);
+              color: #333333;
+            }
+
+            /* Custom Dropdown Styling */
+            .custom-dropdown {
+              position: relative;
+              min-width: 140px;
+              cursor: pointer;
+            }
+
+            .dropdown-selected {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 10px 16px;
+              border: 2px solid rgba(255, 255, 255, 0.2);
+              border-radius: 5px;
+              background: rgba(0, 0, 0, 0.4);
+              color: white;
+              font-size: 14px;
+              font-weight: 600;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+              backdrop-filter: blur(20px);
+            }
+
+            .dropdown-selected:hover {
+              background: rgba(0, 0, 0, 0.5);
+              border-color: rgba(255, 255, 255, 0.4);
+              transform: translateY(-2px);
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            }
+
+            .dropdown-arrow {
+              width: 16px;
+              height: 16px;
+              margin-left: 8px;
+              transition: transform 0.3s ease;
+              flex-shrink: 0;
+            }
+
+            .custom-dropdown.open .dropdown-arrow {
+              transform: rotate(180deg);
+            }
+
+            .dropdown-options {
+              position: absolute;
+              bottom: 100%;
+              left: 0;
+              right: 0;
+              background: rgba(0, 0, 0, 0.5);
+              border: 2px solid rgba(255, 255, 255, 0.2);
+              border-radius: 5px;
+              box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+              backdrop-filter: blur(20px);
+              z-index: 1000;
+              opacity: 0;
+              visibility: hidden;
+              transform: translateY(10px);
+              transition: all 0.3s ease;
+              margin-bottom: 4px;
+              overflow: hidden;
+            }
+
+            .custom-dropdown.open .dropdown-options {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+            }
+
+            .dropdown-option {
+              padding: 12px 16px;
+              color: white;
+              font-size: 14px;
+              font-weight: 500;
+              cursor: pointer;
+              transition: all 0.2s ease;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .dropdown-option:last-child {
+              border-bottom: none;
+            }
+
+            .dropdown-option:hover {
+              background: rgba(133, 30, 212, 0.1);
+              color: #ffffff;
+              /* transform: translateX(4px); */
+            }
+
+            .dropdown-option.selected {
+              background: rgba(133, 30, 212, 0.3);
+              color: #ffffff;
+            }
+
+            /* White background adaptation for custom dropdown */
+            .ud-header.sticky .dropdown-selected {
+              background: rgba(255, 255, 255, 0.9);
+              color: #333333;
+              border-color: rgba(0, 0, 0, 0.1);
+            }
+
+            .ud-header.sticky .dropdown-selected:hover {
+              background: rgba(255, 255, 255, 0.95);
+              border-color: rgba(0, 0, 0, 0.2);
+              color: #000000;
+            }
+
+            .ud-header.sticky .dropdown-options {
+              background: rgba(255, 255, 255, 0.98);
+              border-color: rgba(0, 0, 0, 0.1);
+              box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+            }
+
+            .ud-header.sticky .dropdown-option {
+              color: #333333;
+              border-bottom-color: rgba(0, 0, 0, 0.1);
+            }
+
+            .ud-header.sticky .dropdown-option:hover {
+              background: rgba(0, 0, 0, 0.05);
+              color: #000000;
+            }
+
+            .ud-header.sticky .dropdown-option.selected {
+              background: rgba(59, 130, 246, 0.1);
+              color: #3b82f6;
+            }
+
+            /* RTL Support */
+            [dir="rtl"] {
+              direction: rtl;
+              text-align: right;
+            }
+
+            [dir="rtl"] .language-switcher {
+              left: 20px;
+              right: auto;
+            }
+
+            [dir="rtl"] .navbar-nav {
+              margin-left: auto;
+              margin-right: 0;
+            }
+
+            /* Mobile responsiveness */
+            @media (max-width: 768px) {
+              .language-switcher {
+                bottom: 15px;
+                left: 15px;
+              }
+              
+              [dir="rtl"] .language-switcher {
+                left: 15px;
+                right: auto;
+              }
+              
+              .language-select {
+                padding: 8px 12px;
+                font-size: 13px;
+                min-width: 70px;
+              }
             }
             
             /* Add critical CSS here */
@@ -187,6 +429,29 @@
         </noscript>
     </head>
   <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <div class="custom-dropdown" id="languageDropdown">
+        <div class="dropdown-selected" id="dropdownSelected">
+          <span class="selected-text">🇺🇸 English</span>
+          <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </div>
+        <div class="dropdown-options" id="dropdownOptions">
+          <div class="dropdown-option" data-value="en">
+            <span>🇺🇸 English</span>
+          </div>
+          <div class="dropdown-option" data-value="fr">
+            <span>🇫🇷 Français</span>
+          </div>
+          <div class="dropdown-option" data-value="ar">
+            <span>🇸🇦 العربية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Loader -->
     <div id="preloader">
       <div class="loader"></div>
@@ -248,18 +513,18 @@
               <div class="navbar-collapse">
                 <ul id="nav" class="navbar-nav mx-auto">
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#home">Home</a>
+                    <a class="ud-menu-scroll" href="#home" data-translate="nav.home">Home</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#video-demo">Watch Demo</a>
+                    <a class="ud-menu-scroll" href="#video-demo" data-translate="nav.demo">Watch Demo</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#features">Features</a>
+                    <a class="ud-menu-scroll" href="#features" data-translate="nav.features">Features</a>
                   </li>
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#contact">Contact</a>
+                    <a class="ud-menu-scroll" href="#contact" data-translate="nav.contact">Contact</a>
                   </li>
                 </ul>
               </div>
@@ -289,10 +554,10 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
-              <h1 class="ud-hero-title">
+              <h1 class="ud-hero-title" data-translate="hero.title">
                 Your Smart Writing Assistant for macOS
               </h1>
-              <p class="ud-hero-desc">
+              <p class="ud-hero-desc" data-translate="hero.description">
                 Transform your writing experience with TextGenieAI. Simply select text anywhere on your Mac 
                 and instantly access powerful AI features for translation, grammar correction, text summarization, 
                 and custom Smart Edit prompts tailored to your specific needs.
@@ -300,12 +565,12 @@
               <ul class="ud-hero-buttons">
                 <li>
                   <a target="_blank" href="https://apps.apple.com/fr/app/textgenieai/id6744940240?l=en-GB&mt=12" class="ud-main-btn ud-white-btn">
-                    <i class="lni lni-apple"></i> Download on App Store
+                    <i class="lni lni-apple"></i> <span data-translate="hero.download">Download on App Store</span>
                   </a>
                 </li>
                 <li>
                   <a href="#features" class="ud-main-btn ud-link-btn">
-                    See Features <i class="lni lni-arrow-right"></i>
+                    <span data-translate="hero.features">See Features</span> <i class="lni lni-arrow-right"></i>
                   </a>
                 </li>
               </ul>
@@ -330,9 +595,9 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-section-title text-center mx-auto">
-              <span>Watch Demo</span>
-              <h2>See TextGenieAI in Action</h2>
-              <p>
+              <span data-translate="demo.subtitle">Watch Demo</span>
+              <h2 data-translate="demo.title">See TextGenieAI in Action</h2>
+              <p data-translate="demo.description">
                 Watch how TextGenieAI can transform your writing experience with its powerful AI features.
               </p>
             </div>
@@ -366,9 +631,9 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-section-title">
-              <span>Features</span>
-              <h2>Smart Writing Enhancement</h2>
-              <p>
+              <span data-translate="features.subtitle">Features</span>
+              <h2 data-translate="features.title">Smart Writing Enhancement</h2>
+              <p data-translate="features.description">
                 Transform your writing experience with powerful AI-powered features that help you write better, faster, and more effectively.
               </p>
             </div>
@@ -381,8 +646,8 @@
                 <i class="lni lni-text-format"></i>
               </div>
               <div class="ud-feature-content">
-                <h3 class="ud-feature-title">Smart Translation</h3>
-                <p class="ud-feature-desc">
+                <h3 class="ud-feature-title" data-translate="features.translation.title">Smart Translation</h3>
+                <p class="ud-feature-desc" data-translate="features.translation.desc">
                   Instantly translate selected text into multiple languages with a single click.
                 </p>
               </div>
@@ -394,8 +659,8 @@
                 <i class="lni lni-pencil-alt"></i>
               </div>
               <div class="ud-feature-content">
-                <h3 class="ud-feature-title">Grammar Correction</h3>
-                <p class="ud-feature-desc">
+                <h3 class="ud-feature-title" data-translate="features.grammar.title">Grammar Correction</h3>
+                <p class="ud-feature-desc" data-translate="features.grammar.desc">
                   Fix grammar, spelling, and punctuation errors in your text instantly.
                 </p>
               </div>
@@ -407,8 +672,8 @@
                 <i class="lni lni-sort-amount-dsc"></i>
               </div>
               <div class="ud-feature-content">
-                <h3 class="ud-feature-title">30+ AI Actions</h3>
-                <p class="ud-feature-desc">
+                <h3 class="ud-feature-title" data-translate="features.actions.title">30+ AI Actions</h3>
+                <p class="ud-feature-desc" data-translate="features.actions.desc">
                   Access over 30 powerful AI features including summarization, paraphrasing, tone adjustment, and more.
                 </p>
               </div>
@@ -420,8 +685,8 @@
                 <i class="lni lni-popup"></i>
               </div>
               <div class="ud-feature-content">
-                <h3 class="ud-feature-title">Instant Access</h3>
-                <p class="ud-feature-desc">
+                <h3 class="ud-feature-title" data-translate="features.access.title">Instant Access</h3>
+                <p class="ud-feature-desc" data-translate="features.access.desc">
                   Smart popup bar appears right above your selected text for quick access to all features.
                 </p>
               </div>
@@ -433,8 +698,8 @@
                 <i class="lni lni-star"></i>
               </div>
               <div class="ud-feature-content">
-                <h3 class="ud-feature-title">Smart Edit</h3>
-                <p class="ud-feature-desc">
+                <h3 class="ud-feature-title" data-translate="features.edit.title">Smart Edit</h3>
+                <p class="ud-feature-desc" data-translate="features.edit.desc">
                   Select any text and add custom prompts to get personalized AI assistance tailored to your specific needs.
                 </p>
               </div>
@@ -454,9 +719,9 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-section-title text-center mx-auto">
-              <span>FAQ</span>
-              <h2>Common Questions</h2>
-              <p>
+              <span data-translate="faq.subtitle">FAQ</span>
+              <h2 data-translate="faq.title">Common Questions</h2>
+              <p data-translate="faq.description">
                 Get answers to frequently asked questions about TextGenieAI's features and functionality.
               </p>
             </div>
@@ -475,10 +740,10 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>How does TextGenieAI work?</span>
+                  <span data-translate="faq.q1.question">How does TextGenieAI work?</span>
                 </button>
                 <div id="collapseOne" class="accordion-collapse collapse">
-                  <div class="ud-faq-body">
+                  <div class="ud-faq-body" data-translate="faq.q1.answer">
                     TextGenieAI works by detecting your text selections anywhere on your Mac. When you select text, a smart popup bar appears above the selection, offering instant access to AI-powered tools like translation, summarization, and grammar correction. Simply click on the desired tool to transform your text.
                   </div>
                 </div>
@@ -494,10 +759,10 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>What languages are supported for translation?</span>
+                  <span data-translate="faq.q2.question">What languages are supported for translation?</span>
                 </button>
                 <div id="collapseTwo" class="accordion-collapse collapse">
-                  <div class="ud-faq-body">
+                  <div class="ud-faq-body" data-translate="faq.q2.answer">
                     TextGenieAI supports translation between multiple major languages including English, Spanish, French, German, Chinese, Japanese, and more. The translations are powered by advanced AI models for accuracy.
                   </div>
                 </div>
@@ -513,10 +778,10 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>Is TextGenieAI available for other platforms?</span>
+                  <span data-translate="faq.q3.question">Is TextGenieAI available for other platforms?</span>
                 </button>
                 <div id="collapseThree" class="accordion-collapse collapse">
-                  <div class="ud-faq-body">
+                  <div class="ud-faq-body" data-translate="faq.q3.answer">
                     Currently, TextGenieAI is exclusively available for macOS. We're focused on providing the best possible experience for Mac users with seamless system integration.
                   </div>
                 </div>
@@ -534,10 +799,10 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>Is my text data secure when using TextGenieAI?</span>
+                  <span data-translate="faq.q4.question">Is my text data secure when using TextGenieAI?</span>
                 </button>
                 <div id="collapseFour" class="accordion-collapse collapse">
-                  <div class="ud-faq-body">
+                  <div class="ud-faq-body" data-translate="faq.q4.answer">
                     Yes, we take your privacy seriously. Your text data is processed securely and is never stored permanently. All processing happens through encrypted connections, and we don't collect or share your content with third parties.
                   </div>
                 </div>
@@ -553,10 +818,10 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>Can I customize the AI tools and their behavior?</span>
+                  <span data-translate="faq.q5.question">Can I customize the AI tools and their behavior?</span>
                 </button>
                 <div id="collapseFive" class="accordion-collapse collapse">
-                  <div class="ud-faq-body">
+                  <div class="ud-faq-body" data-translate="faq.q5.answer">
                     Yes, TextGenieAI offers customization options. You can arrange your favorite tools, adjust the AI's writing style preferences, and set keyboard shortcuts for quick access. The popup bar can also be customized to show your most-used tools first.
                   </div>
                 </div>
@@ -572,10 +837,10 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>Do I need an internet connection?</span>
+                  <span data-translate="faq.q6.question">Do I need an internet connection?</span>
                 </button>
                 <div id="collapseSix" class="accordion-collapse collapse">
-                  <div class="ud-faq-body">
+                  <div class="ud-faq-body" data-translate="faq.q6.answer">
                     Yes, TextGenieAI requires an internet connection to access its AI-powered features. This ensures you always have access to the latest improvements and most accurate results.
                   </div>
                 </div>
@@ -591,10 +856,10 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span>How does the Smart Edit feature work?</span>
+                  <span data-translate="faq.q7.question">How does the Smart Edit feature work?</span>
                 </button>
                 <div id="collapseSeven" class="accordion-collapse collapse">
-                  <div class="ud-faq-body">
+                  <div class="ud-faq-body" data-translate="faq.q7.answer">
                     The Smart Edit feature allows you to select any text and add your own custom prompts to get highly personalized AI assistance. Simply select the text, click on the Smart Edit option in the popup toolbar, enter your specific instructions or prompts, and TextGenieAI will process your request according to your custom requirements.
                   </div>
                 </div>
@@ -612,19 +877,19 @@
         <div class="row align-items-center">
           <div class="col-lg-4">
             <div class="ud-download-content wow fadeInUp" data-wow-delay=".2s">
-              <h2 class="ud-download-title">Download TextGenieAI Today</h2>
-              <p class="ud-download-desc">
+              <h2 class="ud-download-title" data-translate="download.title">Download TextGenieAI Today</h2>
+              <p class="ud-download-desc" data-translate="download.description">
                 Get started with TextGenieAI and transform your writing experience on macOS. 
                 Our smart writing assistant is always ready to help you create better content.
               </p>
               <br/>
               <ul class="ud-download-features">
-                <li><i class="lni lni-checkmark-circle"></i> Free to use</li>
-                <li><i class="lni lni-checkmark-circle"></i> No Registration Required</li>
-                <li><i class="lni lni-checkmark-circle"></i> Instant Installation</li>
+                <li><i class="lni lni-checkmark-circle"></i> <span data-translate="download.feature1">Free to use</span></li>
+                <li><i class="lni lni-checkmark-circle"></i> <span data-translate="download.feature2">No Registration Required</span></li>
+                <li><i class="lni lni-checkmark-circle"></i> <span data-translate="download.feature3">Instant Installation</span></li>
               </ul>
               <br/>
-              <a target="_blank" href="/download/TextGenieAI-Installer-1.7.dmg" class="ud-main-btn ud-white-btn">
+              <a target="_blank" href="/download/TextGenieAI-Installer-1.7.dmg" class="ud-main-btn ud-white-btn" data-translate="download.button">
                 <i class="lni lni-apple"></i> Download for macOS
               </a>
             </div>
@@ -646,9 +911,9 @@
           <div class="col-xl-8 col-lg-7">
             <div class="ud-contact-content-wrapper">
               <div class="ud-contact-title">
-                <span>CONTACT US</span>
-                <h2>
-                  Let’s talk about <br />
+                <span data-translate="contact.subtitle">CONTACT US</span>
+                <h2 data-translate="contact.title">
+                  Let's talk about <br />
                   Love to hear from you!
                 </h2>
               </div>
@@ -658,8 +923,8 @@
                     <i class="lni lni-map-marker"></i>
                   </div>
                   <div class="ud-info-meta">
-                    <h5>Our Location</h5>
-                    <p>24th Floor, Bd Hassan II, Morocco</p>
+                    <h5 data-translate="contact.location.title">Our Location</h5>
+                    <p data-translate="contact.location.address">24th Floor, Bd Hassan II, Morocco</p>
                   </div>
                 </div>
                 <div class="ud-single-info">
@@ -667,8 +932,8 @@
                     <i class="lni lni-envelope"></i>
                   </div>
                   <div class="ud-info-meta">
-                    <h5>How Can We Help?</h5>
-                    <p>soufiane.masmoud@gmail.com</p>
+                    <h5 data-translate="contact.email.title">How Can We Help?</h5>
+                    <p data-translate="contact.email.address">soufiane.masmoud@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -679,42 +944,46 @@
               class="ud-contact-form-wrapper wow fadeInUp"
               data-wow-delay=".2s"
             >
-              <h3 class="ud-contact-form-title">Send us a Message</h3>
+              <h3 class="ud-contact-form-title" data-translate="contact.form.title">Send us a Message</h3>
               <form action="https://formspree.io/f/moveorgz" method="POST" class="ud-contact-form">
                 <div class="ud-form-group">
-                  <label for="fullName">Full Name</label>
+                  <label for="fullName" data-translate="contact.form.name.label">Full Name</label>
                   <input
                     type="text"
                     name="fullName"
+                    data-translate-placeholder="contact.form.name.placeholder"
                     placeholder="Your Name"
                   />
                 </div>
                 <div class="ud-form-group">
-                  <label for="email">Email</label>
+                  <label for="email" data-translate="contact.form.email.label">Email</label>
                   <input
                     type="email"
                     name="email"
+                    data-translate-placeholder="contact.form.email.placeholder"
                     placeholder="Your best email"
                   />
                 </div>
                 <div class="ud-form-group">
-                  <label for="phone">Phone</label>
+                  <label for="phone" data-translate="contact.form.phone.label">Phone</label>
                   <input
                     type="text"
                     name="phone"
+                    data-translate-placeholder="contact.form.phone.placeholder"
                     placeholder="Your phone number"
                   />
                 </div>
                 <div class="ud-form-group">
-                  <label for="message">Message</label>
+                  <label for="message" data-translate="contact.form.message.label">Message</label>
                   <textarea
                     name="message"
                     rows="1"
+                    data-translate-placeholder="contact.form.message.placeholder"
                     placeholder="Type your message here"
                   ></textarea>
                 </div>
                 <div class="ud-form-group mb-0">
-                  <button type="submit" class="ud-main-btn">
+                  <button type="submit" class="ud-main-btn" data-translate="contact.form.submit">
                     Send Message
                   </button>
                 </div>
@@ -745,13 +1014,13 @@
                 <img src="assets/images/logo/logo-light.webp" alt="logo" />
               </a>
               <div class="ud-footer-links">
-                <a href="privacy-policy/index.html">Privacy Policy</a>
+                <a href="privacy-policy/index.html" data-translate="footer.privacy">Privacy Policy</a>
                 <span class="separator">|</span>
-                <a href="copyright/index.html">Copyright</a>
+                <a href="copyright/index.html" data-translate="footer.copyright">Copyright</a>
               </div>
             </div>
             <div class="col-md-4">
-              <p class="ud-footer-bottom-right">
+              <p class="ud-footer-bottom-right" data-translate="footer.credits">
                 Designed and Developed by
                 <a href="https://soufiane.masmoud.com/" rel="nofollow">Masmoud</a>
               </p>
@@ -874,6 +1143,510 @@
       // Initialize particles when page loads
       window.addEventListener('load', function() {
         createParticles();
+      });
+    </script>
+
+    <!-- Translation System -->
+    <script>
+      // Translation data
+      const translations = {
+        en: {
+          nav: {
+            home: "Home",
+            demo: "Watch Demo",
+            features: "Features",
+            contact: "Contact"
+          },
+          hero: {
+            title: "Your Smart Writing Assistant for macOS",
+            description: "Transform your writing experience with TextGenieAI. Simply select text anywhere on your Mac and instantly access powerful AI features for translation, grammar correction, text summarization, and custom Smart Edit prompts tailored to your specific needs.",
+            download: "Download on App Store",
+            features: "See Features"
+          },
+          demo: {
+            subtitle: "Watch Demo",
+            title: "See TextGenieAI in Action",
+            description: "Watch how TextGenieAI can transform your writing experience with its powerful AI features."
+          },
+          features: {
+            subtitle: "Features",
+            title: "Smart Writing Enhancement",
+            description: "Transform your writing experience with powerful AI-powered features that help you write better, faster, and more effectively.",
+            translation: {
+              title: "Smart Translation",
+              desc: "Instantly translate selected text into multiple languages with a single click."
+            },
+            grammar: {
+              title: "Grammar Correction",
+              desc: "Fix grammar, spelling, and punctuation errors in your text instantly."
+            },
+            actions: {
+              title: "30+ AI Actions",
+              desc: "Access over 30 powerful AI features including summarization, paraphrasing, tone adjustment, and more."
+            },
+            access: {
+              title: "Instant Access",
+              desc: "Smart popup bar appears right above your selected text for quick access to all features."
+            },
+            edit: {
+              title: "Smart Edit",
+              desc: "Select any text and add custom prompts to get personalized AI assistance tailored to your specific needs."
+            }
+          },
+          faq: {
+            subtitle: "FAQ",
+            title: "Common Questions",
+            description: "Get answers to frequently asked questions about TextGenieAI's features and functionality.",
+            q1: {
+              question: "How does TextGenieAI work?",
+              answer: "TextGenieAI works by detecting your text selections anywhere on your Mac. When you select text, a smart popup bar appears above the selection, offering instant access to AI-powered tools like translation, summarization, and grammar correction. Simply click on the desired tool to transform your text."
+            },
+            q2: {
+              question: "What languages are supported for translation?",
+              answer: "TextGenieAI supports translation between multiple major languages including English, Spanish, French, German, Chinese, Japanese, and more. The translations are powered by advanced AI models for accuracy."
+            },
+            q3: {
+              question: "Is TextGenieAI available for other platforms?",
+              answer: "Currently, TextGenieAI is exclusively available for macOS. We're focused on providing the best possible experience for Mac users with seamless system integration."
+            },
+            q4: {
+              question: "Is my text data secure when using TextGenieAI?",
+              answer: "Yes, we take your privacy seriously. Your text data is processed securely and is never stored permanently. All processing happens through encrypted connections, and we don't collect or share your content with third parties."
+            },
+            q5: {
+              question: "Can I customize the AI tools and their behavior?",
+              answer: "Yes, TextGenieAI offers customization options. You can arrange your favorite tools, adjust the AI's writing style preferences, and set keyboard shortcuts for quick access. The popup bar can also be customized to show your most-used tools first."
+            },
+            q6: {
+              question: "Do I need an internet connection?",
+              answer: "Yes, TextGenieAI requires an internet connection to access its AI-powered features. This ensures you always have access to the latest improvements and most accurate results."
+            },
+            q7: {
+              question: "How does the Smart Edit feature work?",
+              answer: "The Smart Edit feature allows you to select any text and add your own custom prompts to get highly personalized AI assistance. Simply select the text, click on the Smart Edit option in the popup toolbar, enter your specific instructions or prompts, and TextGenieAI will process your request according to your custom requirements."
+            }
+          },
+          download: {
+            title: "Download TextGenieAI Today",
+            description: "Get started with TextGenieAI and transform your writing experience on macOS. Our smart writing assistant is always ready to help you create better content.",
+            feature1: "Free to use",
+            feature2: "No Registration Required",
+            feature3: "Instant Installation",
+            button: "Download for macOS"
+          },
+          contact: {
+            subtitle: "CONTACT US",
+            title: "Let's talk about Love to hear from you!",
+            location: {
+              title: "Our Location",
+              address: "24th Floor, Bd Hassan II, Morocco"
+            },
+            email: {
+              title: "How Can We Help?",
+              address: "soufiane.masmoud@gmail.com"
+            },
+            form: {
+              title: "Send us a Message",
+              name: {
+                label: "Full Name",
+                placeholder: "Your Name"
+              },
+              email: {
+                label: "Email",
+                placeholder: "Your best email"
+              },
+              phone: {
+                label: "Phone",
+                placeholder: "Your phone number"
+              },
+              message: {
+                label: "Message",
+                placeholder: "Type your message here"
+              },
+              submit: "Send Message"
+            }
+          },
+          footer: {
+            privacy: "Privacy Policy",
+            copyright: "Copyright",
+            credits: "Designed and Developed by Masmoud"
+          }
+        },
+        fr: {
+          nav: {
+            home: "Accueil",
+            demo: "Voir la Démo",
+            features: "Fonctionnalités",
+            contact: "Contact"
+          },
+          hero: {
+            title: "Votre Assistant d'Écriture Intelligent pour macOS",
+            description: "Transformez votre expérience d'écriture avec TextGenieAI. Sélectionnez simplement du texte n'importe où sur votre Mac et accédez instantanément à de puissantes fonctionnalités IA pour la traduction, la correction grammaticale, le résumé de texte et des invites Smart Edit personnalisées adaptées à vos besoins spécifiques.",
+            download: "Télécharger sur l'App Store",
+            features: "Voir les Fonctionnalités"
+          },
+          demo: {
+            subtitle: "Voir la Démo",
+            title: "Découvrez TextGenieAI en Action",
+            description: "Découvrez comment TextGenieAI peut transformer votre expérience d'écriture avec ses puissantes fonctionnalités IA."
+          },
+          features: {
+            subtitle: "Fonctionnalités",
+            title: "Amélioration Intelligente de l'Écriture",
+            description: "Transformez votre expérience d'écriture avec des fonctionnalités puissantes alimentées par l'IA qui vous aident à écrire mieux, plus rapidement et plus efficacement.",
+            translation: {
+              title: "Traduction Intelligente",
+              desc: "Traduisez instantanément le texte sélectionné en plusieurs langues d'un simple clic."
+            },
+            grammar: {
+              title: "Correction Grammaticale",
+              desc: "Corrigez instantanément les erreurs de grammaire, d'orthographe et de ponctuation dans votre texte."
+            },
+            actions: {
+              title: "Plus de 30 Actions IA",
+              desc: "Accédez à plus de 30 fonctionnalités IA puissantes incluant la synthèse, la paraphrase, l'ajustement du ton, et plus encore."
+            },
+            access: {
+              title: "Accès Instantané",
+              desc: "Une barre contextuelle intelligente apparaît juste au-dessus de votre texte sélectionné pour un accès rapide à toutes les fonctionnalités."
+            },
+            edit: {
+              title: "Édition Intelligente",
+              desc: "Sélectionnez n'importe quel texte et ajoutez des invites personnalisées pour obtenir une assistance IA personnalisée adaptée à vos besoins spécifiques."
+            }
+          },
+          faq: {
+            subtitle: "FAQ",
+            title: "Questions Fréquentes",
+            description: "Obtenez des réponses aux questions fréquemment posées sur les fonctionnalités et la fonctionnalité de TextGenieAI.",
+            q1: {
+              question: "Comment fonctionne TextGenieAI ?",
+              answer: "TextGenieAI fonctionne en détectant vos sélections de texte n'importe où sur votre Mac. Lorsque vous sélectionnez du texte, une barre contextuelle intelligente apparaît au-dessus de la sélection, offrant un accès instantané aux outils alimentés par l'IA comme la traduction, la synthèse et la correction grammaticale. Cliquez simplement sur l'outil désiré pour transformer votre texte."
+            },
+            q2: {
+              question: "Quelles langues sont prises en charge pour la traduction ?",
+              answer: "TextGenieAI prend en charge la traduction entre plusieurs langues principales incluant l'anglais, l'espagnol, le français, l'allemand, le chinois, le japonais, et plus encore. Les traductions sont alimentées par des modèles IA avancés pour la précision."
+            },
+            q3: {
+              question: "TextGenieAI est-il disponible pour d'autres plateformes ?",
+              answer: "Actuellement, TextGenieAI est exclusivement disponible pour macOS. Nous nous concentrons sur la fourniture de la meilleure expérience possible pour les utilisateurs Mac avec une intégration système transparente."
+            },
+            q4: {
+              question: "Mes données textuelles sont-elles sécurisées lors de l'utilisation de TextGenieAI ?",
+              answer: "Oui, nous prenons votre confidentialité au sérieux. Vos données textuelles sont traitées de manière sécurisée et ne sont jamais stockées de façon permanente. Tout le traitement se fait via des connexions chiffrées, et nous ne collectons ni ne partageons votre contenu avec des tiers."
+            },
+            q5: {
+              question: "Puis-je personnaliser les outils IA et leur comportement ?",
+              answer: "Oui, TextGenieAI offre des options de personnalisation. Vous pouvez organiser vos outils favoris, ajuster les préférences de style d'écriture de l'IA, et définir des raccourcis clavier pour un accès rapide. La barre contextuelle peut également être personnalisée pour afficher vos outils les plus utilisés en premier."
+            },
+            q6: {
+              question: "Ai-je besoin d'une connexion internet ?",
+              answer: "Oui, TextGenieAI nécessite une connexion internet pour accéder à ses fonctionnalités alimentées par l'IA. Cela garantit que vous avez toujours accès aux dernières améliorations et aux résultats les plus précis."
+            },
+            q7: {
+              question: "Comment fonctionne la fonctionnalité d'Édition Intelligente ?",
+              answer: "La fonctionnalité d'Édition Intelligente vous permet de sélectionner n'importe quel texte et d'ajouter vos propres invites personnalisées pour obtenir une assistance IA hautement personnalisée. Sélectionnez simplement le texte, cliquez sur l'option d'Édition Intelligente dans la barre d'outils contextuelle, entrez vos instructions ou invites spécifiques, et TextGenieAI traitera votre demande selon vos exigences personnalisées."
+            }
+          },
+          download: {
+            title: "Téléchargez TextGenieAI Aujourd'hui",
+            description: "Commencez avec TextGenieAI et transformez votre expérience d'écriture sur macOS. Notre assistant d'écriture intelligent est toujours prêt à vous aider à créer un meilleur contenu.",
+            feature1: "Gratuit à utiliser",
+            feature2: "Aucune Inscription Requise",
+            feature3: "Installation Instantanée",
+            button: "Télécharger pour macOS"
+          },
+          contact: {
+            subtitle: "CONTACTEZ-NOUS",
+            title: "Parlons-en Nous aimerions avoir de vos nouvelles !",
+            location: {
+              title: "Notre Emplacement",
+              address: "24ème Étage, Bd Hassan II, Maroc"
+            },
+            email: {
+              title: "Comment Pouvons-Nous Vous Aider ?",
+              address: "soufiane.masmoud@gmail.com"
+            },
+            form: {
+              title: "Envoyez-nous un Message",
+              name: {
+                label: "Nom Complet",
+                placeholder: "Votre Nom"
+              },
+              email: {
+                label: "Email",
+                placeholder: "Votre meilleur email"
+              },
+              phone: {
+                label: "Téléphone",
+                placeholder: "Votre numéro de téléphone"
+              },
+              message: {
+                label: "Message",
+                placeholder: "Tapez votre message ici"
+              },
+              submit: "Envoyer le Message"
+            }
+          },
+          footer: {
+            privacy: "Politique de Confidentialité",
+            copyright: "Droits d'Auteur",
+            credits: "Conçu et Développé par Masmoud"
+          }
+        },
+        ar: {
+          nav: {
+            home: "الرئيسية",
+            demo: "مشاهدة العرض",
+            features: "الميزات",
+            contact: "اتصل بنا"
+          },
+          hero: {
+            title: "مساعد الكتابة الذكي لنظام macOS",
+            description: "حوّل تجربة الكتابة الخاصة بك مع TextGenieAI. ما عليك سوى تحديد النص في أي مكان على جهاز Mac الخاص بك والوصول فوراً إلى ميزات الذكاء الاصطناعي القوية للترجمة وتصحيح القواعد وتلخيص النص ومطالبات التحرير الذكي المخصصة المصممة خصيصاً لاحتياجاتك.",
+            download: "تحميل من متجر التطبيقات",
+            features: "عرض الميزات"
+          },
+          demo: {
+            subtitle: "مشاهدة العرض",
+            title: "شاهد TextGenieAI في العمل",
+            description: "شاهد كيف يمكن لـ TextGenieAI تحويل تجربة الكتابة الخاصة بك بميزات الذكاء الاصطناعي القوية."
+          },
+          features: {
+            subtitle: "الميزات",
+            title: "تحسين الكتابة الذكي",
+            description: "حوّل تجربة الكتابة الخاصة بك بميزات قوية مدعومة بالذكاء الاصطناعي تساعدك على الكتابة بشكل أفضل وأسرع وأكثر فعالية.",
+            translation: {
+              title: "الترجمة الذكية",
+              desc: "ترجم النص المحدد فوراً إلى لغات متعددة بنقرة واحدة."
+            },
+            grammar: {
+              title: "تصحيح القواعد",
+              desc: "اصلح أخطاء القواعد والإملاء وعلامات الترقيم في نصك فوراً."
+            },
+            actions: {
+              title: "أكثر من 30 إجراء ذكي",
+              desc: "احصل على أكثر من 30 ميزة ذكاء اصطناعي قوية تشمل التلخيص وإعادة الصياغة وتعديل النبرة والمزيد."
+            },
+            access: {
+              title: "الوصول الفوري",
+              desc: "يظهر شريط منبثق ذكي فوق النص المحدد مباشرة للوصول السريع لجميع الميزات."
+            },
+            edit: {
+              title: "التحرير الذكي",
+              desc: "حدد أي نص وأضف مطالبات مخصصة للحصول على مساعدة ذكاء اصطناعي شخصية مصممة خصيصاً لاحتياجاتك."
+            }
+          },
+          faq: {
+            subtitle: "الأسئلة الشائعة",
+            title: "الأسئلة الشائعة",
+            description: "احصل على إجابات للأسئلة المتكررة حول ميزات ووظائف TextGenieAI.",
+            q1: {
+              question: "كيف يعمل TextGenieAI؟",
+              answer: "يعمل TextGenieAI من خلال اكتشاف تحديدات النص في أي مكان على جهاز Mac الخاص بك. عندما تحدد نصاً، يظهر شريط منبثق ذكي فوق التحديد، يوفر وصولاً فورياً لأدوات الذكاء الاصطناعي مثل الترجمة والتلخيص وتصحيح القواعد. ما عليك سوى النقر على الأداة المرغوبة لتحويل نصك."
+            },
+            q2: {
+              question: "ما هي اللغات المدعومة للترجمة؟",
+              answer: "يدعم TextGenieAI الترجمة بين عدة لغات رئيسية تشمل الإنجليزية والإسبانية والفرنسية والألمانية والصينية واليابانية والمزيد. الترجمات مدعومة بنماذج ذكاء اصطناعي متقدمة للدقة."
+            },
+            q3: {
+              question: "هل TextGenieAI متاح لمنصات أخرى؟",
+              answer: "حالياً، TextGenieAI متاح حصرياً لنظام macOS. نحن نركز على توفير أفضل تجربة ممكنة لمستخدمي Mac مع تكامل نظام سلس."
+            },
+            q4: {
+              question: "هل بيانات النص الخاصة بي آمنة عند استخدام TextGenieAI؟",
+              answer: "نعم، نحن نأخذ خصوصيتك على محمل الجد. يتم معالجة بيانات النص الخاصة بك بأمان ولا يتم تخزينها بشكل دائم أبداً. تتم جميع المعالجات عبر اتصالات مشفرة، ولا نجمع أو نشارك محتواك مع أطراف ثالثة."
+            },
+            q5: {
+              question: "هل يمكنني تخصيص أدوات الذكاء الاصطناعي وسلوكها؟",
+              answer: "نعم، يوفر TextGenieAI خيارات تخصيص. يمكنك ترتيب أدواتك المفضلة وضبط تفضيلات أسلوب الكتابة للذكاء الاصطناعي وتعيين اختصارات لوحة المفاتيح للوصول السريع. يمكن أيضاً تخصيص الشريط المنبثق لإظهار أدواتك الأكثر استخداماً أولاً."
+            },
+            q6: {
+              question: "هل أحتاج إلى اتصال بالإنترنت؟",
+              answer: "نعم، يتطلب TextGenieAI اتصالاً بالإنترنت للوصول إلى ميزات الذكاء الاصطناعي. هذا يضمن أن لديك دائماً وصولاً لأحدث التحسينات والنتائج الأكثر دقة."
+            },
+            q7: {
+              question: "كيف تعمل ميزة التحرير الذكي؟",
+              answer: "تتيح لك ميزة التحرير الذكي تحديد أي نص وإضافة مطالباتك المخصصة للحصول على مساعدة ذكاء اصطناعي شخصية للغاية. ما عليك سوى تحديد النص والنقر على خيار التحرير الذكي في شريط الأدوات المنبثق وإدخال تعليماتك أو مطالباتك المحددة، وسيقوم TextGenieAI بمعالجة طلبك وفقاً لمتطلباتك المخصصة."
+            }
+          },
+          download: {
+            title: "حمّل TextGenieAI اليوم",
+            description: "ابدأ مع TextGenieAI وحوّل تجربة الكتابة الخاصة بك على macOS. مساعد الكتابة الذكي الخاص بنا جاهز دائماً لمساعدتك في إنشاء محتوى أفضل.",
+            feature1: "مجاني للاستخدام",
+            feature2: "لا يتطلب تسجيل",
+            feature3: "تثبيت فوري",
+            button: "تحميل لنظام macOS"
+          },
+          contact: {
+            subtitle: "اتصل بنا",
+            title: "دعنا نتحدث نحب أن نسمع منك!",
+            location: {
+              title: "موقعنا",
+              address: "الطابق 24، بولفار الحسن الثاني، المغرب"
+            },
+            email: {
+              title: "كيف يمكننا المساعدة؟",
+              address: "soufiane.masmoud@gmail.com"
+            },
+            form: {
+              title: "أرسل لنا رسالة",
+              name: {
+                label: "الاسم الكامل",
+                placeholder: "اسمك"
+              },
+              email: {
+                label: "البريد الإلكتروني",
+                placeholder: "أفضل بريد إلكتروني لك"
+              },
+              phone: {
+                label: "الهاتف",
+                placeholder: "رقم هاتفك"
+              },
+              message: {
+                label: "الرسالة",
+                placeholder: "اكتب رسالتك هنا"
+              },
+              submit: "إرسال الرسالة"
+            }
+          },
+          footer: {
+            privacy: "سياسة الخصوصية",
+            copyright: "حقوق الطبع والنشر",
+            credits: "مصمم ومطور بواسطة مسعود"
+          }
+        }
+      };
+
+      // Translation system
+      class TranslationSystem {
+        constructor() {
+          this.currentLanguage = localStorage.getItem('language') || 'en';
+          this.init();
+        }
+
+        init() {
+          this.setupLanguageSelector();
+          this.applyLanguage(this.currentLanguage);
+        }
+
+        setupLanguageSelector() {
+          const dropdown = document.getElementById('languageDropdown');
+          const dropdownSelected = document.getElementById('dropdownSelected');
+          const dropdownOptions = document.getElementById('dropdownOptions');
+          
+          if (dropdown && dropdownSelected && dropdownOptions) {
+            // Set initial selected language
+            this.updateDropdownDisplay(this.currentLanguage);
+            
+            // Toggle dropdown on click
+            dropdownSelected.addEventListener('click', (e) => {
+              e.stopPropagation();
+              dropdown.classList.toggle('open');
+            });
+            
+            // Handle option selection
+            const options = dropdownOptions.querySelectorAll('.dropdown-option');
+            options.forEach(option => {
+              option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const value = option.getAttribute('data-value');
+                this.changeLanguage(value);
+                dropdown.classList.remove('open');
+              });
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+              dropdown.classList.remove('open');
+            });
+            
+            // Close dropdown on escape key
+            document.addEventListener('keydown', (e) => {
+              if (e.key === 'Escape') {
+                dropdown.classList.remove('open');
+              }
+            });
+          }
+        }
+
+        updateDropdownDisplay(language) {
+          const dropdownSelected = document.getElementById('dropdownSelected');
+          const dropdownOptions = document.getElementById('dropdownOptions');
+          
+          if (dropdownSelected && dropdownOptions) {
+            // Update selected text
+            const selectedText = dropdownSelected.querySelector('.selected-text');
+            const languageMap = {
+              'en': '🇺🇸 English',
+              'fr': '🇫🇷 Français',
+              'ar': '🇸🇦 العربية'
+            };
+            
+            if (selectedText && languageMap[language]) {
+              selectedText.textContent = languageMap[language];
+            }
+            
+            // Update selected option styling
+            const options = dropdownOptions.querySelectorAll('.dropdown-option');
+            options.forEach(option => {
+              option.classList.remove('selected');
+              if (option.getAttribute('data-value') === language) {
+                option.classList.add('selected');
+              }
+            });
+          }
+        }
+
+        changeLanguage(language) {
+          this.currentLanguage = language;
+          localStorage.setItem('language', language);
+          this.applyLanguage(language);
+        }
+
+        applyLanguage(language) {
+          // Set document direction for RTL languages
+          if (language === 'ar') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+          } else {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', language);
+          }
+
+          // Apply translations
+          const elements = document.querySelectorAll('[data-translate]');
+          elements.forEach(element => {
+            const key = element.getAttribute('data-translate');
+            const translation = this.getTranslation(key, language);
+            if (translation) {
+              element.textContent = translation;
+            }
+          });
+
+          // Update language dropdown display
+          this.updateDropdownDisplay(language);
+        }
+
+        getTranslation(key, language) {
+          const keys = key.split('.');
+          let translation = translations[language];
+          
+          for (const k of keys) {
+            if (translation && translation[k]) {
+              translation = translation[k];
+            } else {
+              return null;
+            }
+          }
+          
+          return translation;
+        }
+      }
+
+      // Initialize translation system when DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        window.translationSystem = new TranslationSystem();
       });
     </script>
     
