@@ -13,11 +13,11 @@
       ud_header.classList.remove("sticky");
     }
 
-    // === logo change
+    // === logo change (dark theme default)
     if (ud_header.classList.contains("sticky")) {
-      logo.src = "assets/images/logo/logo-dark.png";
+      logo.src = "/assets/images/logo/logo-light.png";
     } else {
-      logo.src = "assets/images/logo/logo-light.png";
+      logo.src = "/assets/images/logo/logo-light.png";
     }
 
     // show or hide the back-top-top button
@@ -90,4 +90,10 @@
   document.querySelector(".back-to-top").onclick = () => {
     scrollTo(document.documentElement);
   };
+
+  // ===== Set footer logo for dark theme
+  const footerLogo = document.querySelector('.ud-footer-logo img');
+  if (footerLogo) {
+    footerLogo.src = "/assets/images/logo/logo-light.png"; // Use light logo for visibility on dark background
+  }
 })();

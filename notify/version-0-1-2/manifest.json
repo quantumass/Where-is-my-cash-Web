@@ -1,10 +1,10 @@
 {
   "notification_type": "push",
-  "title": "TextGenie Update Available",
-  "description": "A new version of TextGenie is available with exciting features and improvements.",
-  "url": "https://textgenieai.com/updates",
+  "title": "Where is my cash ? Update Available",
+  "description": "A new version of Where is my cash ? is available with exciting expense tracking features and improvements.",
+  "url": "https://whereismycash.app/updates",
   "restrictions": {
-    "max_limit_prompt": 100,
-    "max_limit_word": 500
+    "max_expenses_per_month": 1000,
+    "max_receipt_size_mb": 10
   }
 }
