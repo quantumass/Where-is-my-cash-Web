@@ -23,6 +23,46 @@
     <link rel="stylesheet" href="/assets/css/lineicons.css">
     <link rel="stylesheet" href="/assets/css/ud-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      .ud-header {
+        position: relative;
+      }
+      /* Page Banner and Content Layout */
+      .ud-page-banner {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+        color: var(--white);
+        padding: 60px 0 60px;
+      }
+      .ud-page-banner h1 {
+        color: rgba(255, 255, 255, 1);
+        margin-bottom: 10px;
+      }
+      .ud-page-banner p {
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+      }
+      .ud-page-content {
+        padding: 60px 0;
+      }
+      .ud-privacy-content-wrapper {
+        background: var(--card-background);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px var(--shadow-color);
+        padding: 40px;
+      }
+      .ud-privacy-title {
+        margin-bottom: 10px;
+      }
+      .ud-privacy-subtitle {
+        margin-top: 24px;
+        margin-bottom: 8px;
+      }
+      .ud-privacy-list {
+        list-style: disc;
+        margin-left: 18px;
+      }
+    </style>
   </head>
   <body>
     <!-- ====== Header Start ====== -->
@@ -68,9 +108,19 @@
       </div>
     </header>
     <!-- ====== Header End ====== -->
-<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <!-- ====== Page Banner ====== -->
+    <section class="ud-page-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1>Copyright</h1>
+            <p>Legal notice and usage terms for Where is my cash ?</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- ====== Copyright Start ====== -->
-    <section class="ud-privacy-policy">
+    <section class="ud-page-content">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -135,7 +185,6 @@
       </div>
     </section>
     <!-- ====== Copyright End ====== -->
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <!-- ====== Footer Start ====== -->
     <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
       <div class="ud-footer-bottom">

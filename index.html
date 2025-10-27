@@ -62,7 +62,8 @@
         "Smart Expense Tracking",
         "Financial Insights",
         "Monthly Summaries",
-        "Secure Data Handling"
+        "Secure Data Handling",
+        "Offline On-Device Receipt Scanning (Foundation Model, iOS 15+ support)"
       ]
     }
     </script>
@@ -421,11 +422,14 @@
         <link rel="stylesheet" href="assets/css/animate.css" media="print" onload="this.media='all'">
         <link rel="stylesheet" href="assets/css/lineicons.css" media="print" onload="this.media='all'">
         <link rel="stylesheet" href="assets/css/ud-styles.css" media="print" onload="this.media='all'">
+        <!-- Bootstrap Icons (external library for richer icons) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
         <noscript>
             <link rel="stylesheet" href="assets/css/bootstrap.min.css">
             <link rel="stylesheet" href="assets/css/animate.css">
             <link rel="stylesheet" href="assets/css/lineicons.css">
             <link rel="stylesheet" href="assets/css/ud-styles.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         </noscript>
     </head>
   <body>
@@ -645,7 +649,7 @@
           <div class="col-xl-3 col-lg-3 col-sm-6">
             <div class="ud-single-feature wow fadeInUp" data-wow-delay=".1s">
               <div class="ud-feature-icon">
-                <i class="lni lni-text-format"></i>
+                <i class="bi bi-receipt"></i>
               </div>
               <div class="ud-feature-content">
                 <h3 class="ud-feature-title" data-translate="features.translation.title">Smart Translation</h3>
@@ -658,7 +662,7 @@
           <div class="col-xl-3 col-lg-3 col-sm-6">
             <div class="ud-single-feature wow fadeInUp" data-wow-delay=".15s">
               <div class="ud-feature-icon">
-                <i class="lni lni-pencil-alt"></i>
+                <i class="bi bi-wallet2"></i>
               </div>
               <div class="ud-feature-content">
                 <h3 class="ud-feature-title" data-translate="features.grammar.title">Grammar Correction</h3>
@@ -671,7 +675,7 @@
           <div class="col-xl-3 col-lg-3 col-sm-6">
             <div class="ud-single-feature wow fadeInUp" data-wow-delay=".2s">
               <div class="ud-feature-icon">
-                <i class="lni lni-sort-amount-dsc"></i>
+                <i class="bi bi-graph-up-arrow"></i>
               </div>
               <div class="ud-feature-content">
                 <h3 class="ud-feature-title" data-translate="features.actions.title">30+ AI Actions</h3>
@@ -684,7 +688,7 @@
           <div class="col-xl-3 col-lg-3 col-sm-6">
             <div class="ud-single-feature wow fadeInUp" data-wow-delay=".25s">
               <div class="ud-feature-icon">
-                <i class="lni lni-popup"></i>
+                <i class="bi bi-shield-lock"></i>
               </div>
               <div class="ud-feature-content">
                 <h3 class="ud-feature-title" data-translate="features.access.title">Instant Access</h3>
@@ -697,12 +701,26 @@
           <div class="col-xl-3 col-lg-3 col-sm-6">
             <div class="ud-single-feature wow fadeInUp" data-wow-delay=".3s">
               <div class="ud-feature-icon">
-                <i class="lni lni-star"></i>
+                <i class="bi bi-collection"></i>
               </div>
               <div class="ud-feature-content">
                 <h3 class="ud-feature-title" data-translate="features.edit.title">Smart Edit</h3>
                 <p class="ud-feature-desc" data-translate="features.edit.desc">
                   Select any text and add custom prompts to get personalized AI assistance tailored to your specific needs.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- New Feature: Offline On-Device Receipt Scanning -->
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".35s">
+              <div class="ud-feature-icon">
+                <i class="bi bi-cloud-slash"></i>
+              </div>
+              <div class="ud-feature-content">
+                <h3 class="ud-feature-title" data-translate="features.offline.title">Offline On‑Device Receipt Scanning</h3>
+                <p class="ud-feature-desc" data-translate="features.offline.desc">
+                  Scan receipts offline using on‑device Foundation Model; supported on iOS 15+.
                 </p>
               </div>
             </div>
@@ -801,7 +819,7 @@
                   <span class="icon flex-shrink-0">
                     <i class="lni lni-chevron-down"></i>
                   </span>
-                  <span data-translate="faq.q4.question">Is my expense data secure when using Where is my cash ??</span>
+                  <span data-translate="faq.q4.question">Is my expense data secure when using Where is my cash ?</span>
                 </button>
                 <div id="collapseFour" class="accordion-collapse collapse">
                   <div class="ud-faq-body" data-translate="faq.q4.answer">
@@ -1196,6 +1214,10 @@
             edit: {
               title: "All-in-One Money Management",
               desc: "Whether you're managing personal finances or tracking receipts for work, Where is my cash ? is your trusted financial companion."
+            },
+            offline: {
+              title: "Offline On‑Device Receipt Scanning",
+              desc: "Scan receipts offline using on‑device Foundation Model; supported on iOS 15+."
             }
           },
           faq: {
@@ -1207,7 +1229,7 @@
               answer: "Where is my cash ? uses advanced AI technology to automatically extract information from your receipts. Simply take a photo of any receipt, and Where is my cash ? will instantly recognize the merchant, amount, date, and other details, saving you from manual data entry."
             },
             q2: {
-              question: "What types of expenses can I track with Where is my cash ??",
+              question: "What types of expenses can I track with Where is my cash ?",
               answer: "Where is my cash ? can track all types of expenses including dining, shopping, transportation, utilities, entertainment, business expenses, and more. You can easily categorize expenses and create custom categories to fit your specific needs."
             },
             q3: {
@@ -1215,7 +1237,7 @@
               answer: "Currently, Where is my cash ? is exclusively available for iOS devices. We're focused on providing the best possible experience for iPhone and iPad users with seamless iOS integration and features."
             },
             q4: {
-              question: "Is my financial data secure with Where is my cash ??",
+              question: "Is my financial data secure with Where is my cash ?",
               answer: "Absolutely. We take your financial privacy seriously. All your data is encrypted and stored securely on your device and our secure servers. We never share your financial information with third parties, and you have full control over your data."
             },
             q5: {
@@ -1318,6 +1340,10 @@
             edit: {
               title: "Gestion Tout-en-Un",
               desc: "Que vous gériez vos finances personnelles ou suiviez des reçus pour le travail, Where is my cash ? est votre compagnon de confiance pour la gestion financière."
+            },
+            offline: {
+              title: "Scan des reçus hors ligne sur l’appareil",
+              desc: "Scannez vos reçus hors ligne grâce au modèle Foundation sur l’iPhone ; compatible iOS 15+."
             }
           },
           faq: {
@@ -1440,6 +1466,10 @@
             edit: {
               title: "إدارة شاملة",
               desc: "سواء كنت تدير أموالك الشخصية أو تتتبع إيصالات العمل، Where is my cash ? هو رفيقك الموثوق للإدارة المالية."
+            },
+            offline: {
+              title: "مسح الإيصالات على الجهاز بدون إنترنت",
+              desc: "امسح الإيصالات بدون اتصال عبر نموذج Foundation على الجهاز؛ مدعوم من iOS 15 فأعلى."
             }
           },
           faq: {
@@ -1447,11 +1477,11 @@
             title: "الأسئلة الشائعة",
             description: "احصل على إجابات للأسئلة المتكررة حول ميزات ووظائف Where is my cash ?.",
             q1: {
-              question: "كيف يعمل مسح الإيصالات في Where is my cash ?؟",
+              question: "كيف يعمل مسح الإيصالات في Where is my cash ؟",
               answer: "يستخدم Where is my cash ? تقنية التعرف البصري المتقدمة لمسح إيصالاتك. ما عليك سوى التقاط صورة لإيصالك بجهاز iPhone الخاص بك وسيستخرج Where is my cash ? تلقائياً التفاصيل المهمة مثل المبلغ والتاريخ والتاجر والعناصر. لا حاجة للكتابة اليدوية!"
             },
             q2: {
-              question: "ما أنواع المصروفات التي يمكنني تتبعها مع Where is my cash ?؟",
+              question: "ما أنواع المصروفات التي يمكنني تتبعها مع Where is my cash ؟",
               answer: "يمكن لـ Where is my cash ? تتبع جميع أنواع المصروفات - الطعام والنقل والترفيه والفواتير والمشتريات والمصروفات المهنية والمزيد. التطبيق يصنف مصروفاتك تلقائياً ويسمح لك بإنشاء فئات مخصصة حسب احتياجاتك."
             },
             q3: {
@@ -1459,7 +1489,7 @@
               answer: "حالياً، Where is my cash ? متاح حصرياً لنظام iOS. نحن نركز على توفير أفضل تجربة ممكنة لمستخدمي iPhone مع تكامل نظام سلس."
             },
             q4: {
-              question: "هل بياناتي المالية آمنة في Where is my cash ?؟",
+              question: "هل بياناتي المالية آمنة في Where is my cash ؟",
               answer: "بالطبع! نحن نأخذ خصوصيتك المالية على محمل الجد. جميع بياناتك مخزنة بأمان على جهازك وفي السحابة مع تشفير بمستوى مصرفي. نحن لا نشارك معلوماتك المالية مع أطراف ثالثة أبداً."
             },
             q5: {

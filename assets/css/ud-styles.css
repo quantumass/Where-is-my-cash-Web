@@ -236,6 +236,8 @@ p {
   position: relative;
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .navbar-brand {
@@ -281,6 +283,7 @@ p {
 
 .navbar-toggler {
   padding: 0;
+  flex: 0 0 30px;
 }
 
 .navbar-toggler .toggler-icon {
@@ -1041,6 +1044,12 @@ img {
   border-radius: 8px;
   background: var(--white);
   padding: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.ud-download-image img {
+  clip-path: inset(0 5px 0 0);
 }
 
 @media (max-width: 767px) {
@@ -1208,13 +1217,15 @@ img {
 /* Reserve space for the logo */
 .navbar-brand {
   display: flex;
+  flex: 1 1 auto;
   align-items: center;
   min-width: 160px;
   min-height: 40px;
 }
 
 .navbar-brand img {
-  width: 300px;
+  width: 100%;
+  /* width: 300px; */
   height: auto;
   padding: 1rem
 }
