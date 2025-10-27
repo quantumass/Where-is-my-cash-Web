@@ -124,13 +124,34 @@ Key styling features:
 
 ### Forms
 
-The contact form (`#contact` section) collects:
-- Name
-- Email
-- Phone
-- Message
+The contact form (`#contact` section) uses Formspree for form submission:
+- **Service**: Formspree (action URL: `https://formspree.io/f/xrbozqjv`)
+- **Method**: POST
+- **Fields**: Name, Email, Phone, Message
+- **Translations**: Form field labels and placeholders are translatable via `data-translate` and `data-translate-placeholder` attributes
 
-Form submission handling is not implemented in the visible code - may require backend integration or form service.
+No backend code is required - form submissions are handled by Formspree.
+
+## Key JavaScript Files
+
+When modifying JavaScript functionality, be aware of these files:
+
+1. **assets/js/main.js** - Core UI interactions:
+   - Sticky header on scroll
+   - Mobile menu toggle
+   - Back-to-top button
+   - Logo switching (uses same logo in all states currently)
+   - Smooth scroll animation with custom easing
+
+2. **assets/js/performance.js** - Performance optimizations:
+   - Lazy loading implementation using IntersectionObserver
+   - Images with `class="lazy"` and `data-src` attribute are lazy-loaded
+
+3. **Inline scripts in index.html**:
+   - **Translation System** (lines 1173-1686): Custom-built i18n with `TranslationSystem` class
+   - **Particle Animation** (lines 1119-1170): Decorative floating particles on hero section
+   - **Menu Scroll Handler** (lines 1075-1117): Active menu highlighting based on scroll position
+   - **PostHog Analytics** (lines 1688-1693): Analytics initialization
 
 ## Development Guidelines
 
@@ -138,8 +159,9 @@ Form submission handling is not implemented in the visible code - may require ba
 
 1. Add HTML structure following existing patterns (use `ud-` prefix for section classes)
 2. Add animations with WOW.js: `class="wow fadeInUp" data-wow-delay=".1s"`
-3. Add translation keys to the `translations` object
+3. Add translation keys to the `translations` object in `index.html` (around line 1175)
 4. Add `data-translate` attributes to translatable elements
+5. Test in all three languages (en, fr, ar) and verify RTL layout for Arabic
 
 ### Modifying Styles
 
@@ -182,4 +204,27 @@ Ensure Apache `mod_deflate` and `mod_expires` modules are enabled.
 
 ## Analytics
 
-PostHog is integrated for analytics with project key `phc_jDXbxwKzvOzxFs6GJpXz5KAgvA6yxXnzNHewDl1NzOd`. Event tracking and session recording can be added using PostHog's API.
+PostHog is integrated for analytics:
+- **Project Key**: `phc_jDXbxwKzvOzxFs6GJpXz5KAgvA6yxXnzNHewDl1NzOd`
+- **API Host**: `https://us.i.posthog.com`
+- **Person Profiles**: `identified_only` (only creates profiles for identified users)
+- Event tracking and session recording can be added using PostHog's API
+- Initialization code is in index.html (lines 1688-1693)
+
+## Important Notes
+
+### No Build Process
+This is a **static site** with no build step beyond optional CSS purging and image optimization. All code is directly served as-is. Changes to HTML, CSS, or JavaScript are immediately visible after refresh.
+
+### Testing
+1. **Local server**: Use `python3 -m http.server 8000` or `npx serve .`
+2. **Multi-language**: Test all three languages (en, fr, ar) using the language switcher
+3. **RTL Layout**: Verify Arabic properly displays right-to-left
+4. **Responsive**: Test on mobile breakpoints (<768px) for mobile-specific styles
+5. **Forms**: Contact form submissions go to Formspree - check `soufiane.masmoud@gmail.com` for submissions
+
+### Deployment
+For Apache hosting:
+1. Ensure `mod_deflate` and `mod_expires` modules are enabled
+2. `.htaccess` file configures caching and compression
+3. No server-side processing required (static HTML/CSS/JS only)
